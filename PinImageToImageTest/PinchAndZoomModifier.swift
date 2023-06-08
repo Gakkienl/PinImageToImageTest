@@ -43,12 +43,14 @@ struct PinchAndZoomModifier: ViewModifier {
             content
                 .frame(width: contentSize.width * currentScale, height: contentSize.height * currentScale, alignment: .center)
                 .modifier(PinchToZoom(minScale: min, maxScale: max, scale: $currentScale))
+                .onTapGesture { location in
+                    let correctedLocation = CGPoint(x: location.x / currentScale, y: location.y / currentScale)
+                    print("Tapped at \(location)", "Current scale: \(currentScale)")
+                    print("Corrected location for Scale: \(correctedLocation)")
+                    tapLocation = correctedLocation
+                }
         }
         .gesture(doubleTapGesture)
-        .onTapGesture { location in
-            print("Tapped at \(location)", "Current scale: \(currentScale)")
-            tapLocation = location
-        }
         .animation(.easeInOut, value: currentScale)
     }
 }

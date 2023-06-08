@@ -30,15 +30,10 @@ struct ContentView: View {
                     .foregroundColor(.blue)
                     .position(x: 1246, y: 467)
             }
-            .coordinateSpace(name: "mapImage")
             .frame(width: proxy.size.width, height: proxy.size.height)
             .scaledToFit()
             .clipShape(Rectangle())
             .PinchToZoomAndPan(contentSize: CGSize(width: proxy.size.width, height: proxy.size.height), tapLocation: $tapLocation)
-//            .onTapGesture { location in
-//                print("Tapped at \(location)")
-//                tapLocation = location
-//            }
         }
     }
 }
