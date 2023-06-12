@@ -19,23 +19,46 @@ extension View {
 
 struct PinchAndZoomModifier: ViewModifier {
     private var contentSize: CGSize
-    private var min: CGFloat = 1.0
+    private var min: CGFloat = 0.75 // 1.0
     private var max: CGFloat = 3.0
     @State var currentScale: CGFloat = 1.0
+    
     @Binding var tapLocation: CGPoint
 
     init(contentSize: CGSize, tapLocation: Binding<CGPoint>) {
         self.contentSize = contentSize
         self._tapLocation = tapLocation
+        print("ContentSize: \(self.contentSize)")
     }
     
     var doubleTapGesture: some Gesture {
         TapGesture(count: 2).onEnded {
-            if currentScale <= min { currentScale = max } else
-            if currentScale >= max { currentScale = min } else {
-                currentScale = ((max - min) * 0.5 + min) < currentScale ? max : min
-            }
+            currentScale = 1.0
+//            if currentScale <= min { currentScale = max } else
+//            if currentScale >= max { currentScale = min } else {
+//                currentScale = ((max - min) * 0.5 + min) < currentScale ? max : min
+//            }
         }
+    }
+    
+    // Try and get the location where the user Long Pressed
+    private var longPressGestureWithDragForLocation: some Gesture {
+        LongPressGesture(minimumDuration: 0.75).sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
+            .onEnded { value in
+                switch value {
+                case .second(true, let drag):
+                    let correctedLocation = CGPoint(
+                                                    x: (drag?.location.x ?? .zero) / currentScale,
+                                                    y: (drag?.location.y ?? .zero) / currentScale
+                                                    )
+                    print("Drag Location", drag?.location ?? .zero)
+                    print("Current scale: \(currentScale)")
+                    print("Corrected location: \(correctedLocation)")
+                    tapLocation = correctedLocation   // capture location !!
+                default:
+                    break
+                }
+            }
     }
     
     func body(content: Content) -> some View {
@@ -43,24 +66,28 @@ struct PinchAndZoomModifier: ViewModifier {
             content
                 .frame(width: contentSize.width * currentScale, height: contentSize.height * currentScale, alignment: .center)
                 .modifier(PinchToZoom(minScale: min, maxScale: max, scale: $currentScale))
-                .onTapGesture { location in
-                    let correctedLocation = CGPoint(x: location.x / currentScale, y: location.y / currentScale)
-                    print("Tapped at \(location)", "Current scale: \(currentScale)")
-                    print("Corrected location for Scale: \(correctedLocation)")
-                    tapLocation = correctedLocation
-                }
+//                .onTapGesture { location in
+//                    let correctedLocation = CGPoint(x: location.x / currentScale, y: location.y / currentScale)
+//                    print("Tapped at \(location)", "Current scale: \(currentScale)")
+//                    print("Corrected location for Scale: \(correctedLocation)")
+//                    tapLocation = correctedLocation
+//                }
+                //.simultaneousGesture(longPressGestureWithDragForLocation)
+                .simultaneousGesture(doubleTapGesture)
         }
-        .gesture(doubleTapGesture)
         .animation(.easeInOut, value: currentScale)
     }
 }
 
+// THREE
 class PinchZoomView: UIView {
     let minScale: CGFloat
     let maxScale: CGFloat
     var isPinching: Bool = false
     var scale: CGFloat = 1.0
     let scaleChange: (CGFloat) -> Void
+    
+    var longPressLocation = CGPoint.zero
     
     init(minScale: CGFloat,
            maxScale: CGFloat,
@@ -73,11 +100,23 @@ class PinchZoomView: UIView {
         super.init(frame: .zero)
         let pinchGesture = UIPinchGestureRecognizer(target: self, action: #selector(pinch(gesture:)))
         pinchGesture.cancelsTouchesInView = false
+        let longPressGesture = UILongPressGestureRecognizer(target: self, action: #selector(longPress(gesture:)))
         addGestureRecognizer(pinchGesture)
+        addGestureRecognizer(longPressGesture)
     }
     
     required init?(coder: NSCoder) {
         fatalError()
+    }
+    
+    @objc private func longPress(gesture: UILongPressGestureRecognizer) {
+        switch gesture.state {
+        case .ended:
+            longPressLocation = gesture.location(in: self)
+            print("Long Pressed in UIView on \(longPressLocation) with scale \(scale)")
+        default:
+            break
+        }
     }
     
     @objc private func pinch(gesture: UIPinchGestureRecognizer) {
@@ -103,6 +142,7 @@ class PinchZoomView: UIView {
     }
 }
 
+// TWO
 struct PinchZoom: UIViewRepresentable {
     let minScale: CGFloat
     let maxScale: CGFloat
@@ -117,6 +157,7 @@ struct PinchZoom: UIViewRepresentable {
     func updateUIView(_ pageControl: PinchZoomView, context: Context) { }
 }
 
+// ONE
 struct PinchToZoom: ViewModifier {
     let minScale: CGFloat
     let maxScale: CGFloat
