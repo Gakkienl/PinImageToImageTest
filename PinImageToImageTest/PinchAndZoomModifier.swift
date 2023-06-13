@@ -184,7 +184,8 @@ struct PinchToZoom: ViewModifier {
                 .animation(.spring(), value: isPinching)
                 .overlay(
                     PinchZoom(minScale: minScale, maxScale: maxScale, scale: $scale, isPinching: $isPinching, longPressLocation: $longPressLocation)
-                        //.allowsHitTesting(false)
+                        // false disables pinch and long press on the overlay, true makes the buttons no longer tap-able
+                        .allowsHitTesting(false)
                 )
         }
     }
