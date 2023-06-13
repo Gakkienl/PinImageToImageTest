@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8D5542982A387C8A00E20AEC /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5542972A387C8A00E20AEC /* ContentView2.swift */; };
 		8D9575082A2B5A6000B66B19 /* PinImageToImageTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */; };
 		8D95750A2A2B5A6000B66B19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9575092A2B5A6000B66B19 /* ContentView.swift */; };
 		8D95750C2A2B5A6100B66B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95750B2A2B5A6100B66B19 /* Assets.xcassets */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8D5542972A387C8A00E20AEC /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
 		8D9575042A2B5A6000B66B19 /* PinImageToImageTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinImageToImageTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinImageToImageTestApp.swift; sourceTree = "<group>"; };
 		8D9575092A2B5A6000B66B19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			children = (
 				8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */,
 				8D9575092A2B5A6000B66B19 /* ContentView.swift */,
+				8D5542972A387C8A00E20AEC /* ContentView2.swift */,
 				8D9575172A2B6A9C00B66B19 /* PinchAndZoomModifier.swift */,
 				8DA20F0F2A31F474006242CB /* GeometryProxy-Extension.swift */,
 				8D95750B2A2B5A6100B66B19 /* Assets.xcassets */,
@@ -146,6 +149,7 @@
 				8DA20F102A31F474006242CB /* GeometryProxy-Extension.swift in Sources */,
 				8D95750A2A2B5A6000B66B19 /* ContentView.swift in Sources */,
 				8D9575082A2B5A6000B66B19 /* PinImageToImageTestApp.swift in Sources */,
+				8D5542982A387C8A00E20AEC /* ContentView2.swift in Sources */,
 				8D9575182A2B6A9C00B66B19 /* PinchAndZoomModifier.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
