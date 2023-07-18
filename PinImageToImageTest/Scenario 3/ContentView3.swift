@@ -1,20 +1,29 @@
 //
-//  ContentView2.swift
+//  ContentView3.swift
 //  PinImageToImageTest
 //
-//  Created by Gakkie Gakkienl on 13/06/2023.
+//  Created by Gakkie Gakkienl on 18/07/2023.
 //
 
-//
-//  ContentView.swift
-//  PinImageToImageTest
-//
-//  Created by Gakkie Gakkienl on 03/06/2023.
-//
+/*
+ CASE:
+        Enable the user tp pin images (symbols) to an Image (pixel coordinates)
+        The pins must stay in the correct place when panning and zooming and
+        also when the screen estate changes by rotating, or split screen and slide
+        over on Ipads. Lastly the pins (symbols) must be tapable!
+ SCENARIO 3:
+        ContentView3 (ScrollView / custom)
+        Works at scale = 1, pins stay in place! Also when zooming out (< 1). Pins are not placed
+        in the correct place when zooming in (under finger), also pins disappear when zooming in?
+        Zooming out again displays the pins in the correct place?
+        Zooming is very erratic & non responsive ...
+ SOLUTION:
+        Get pinch and zoom to work without breaking anything ....
+ */
 
 import SwiftUI
 
-struct ContentView2: View {
+struct ContentView3: View {
     @State private var mapImage = UIImage(named: "worldMap")!
     @State private var tapLocation = CGPoint.zero
     
@@ -29,10 +38,12 @@ struct ContentView2: View {
                         .resizable()
                         .fixedSize()
                     
+                    // Pin at pressed location
                     mapImagePinSmall()
                         .foregroundColor(.green)
                         .position(tapLocation)
                     
+                    // Test pins (stored)
                     mapImagePinSmall()
                         .foregroundColor(.red)
                         .position(x: 776, y: 1150)
@@ -44,19 +55,24 @@ struct ContentView2: View {
                 .onAppear {
                     print("image size", mapImage.size)
                 }
-                .frame(width: mapImage.size.width, height: mapImage.size.height)
+                .frame(width: mapImage.size.width * finalScale, height: mapImage.size.height * finalScale)
                 .scaleEffect(finalScale)
                 .gesture(
                     MagnificationGesture().onChanged { newScale in
-                        currentScale = newScale
+                        withAnimation {
+                            currentScale = newScale
+                        }
                     }
                     .onEnded { scale in
-                        finalScale = scale
-                        currentScale = 0
+                        withAnimation {
+                            finalScale = scale
+                            currentScale = 0
+                        }
                     }
                 )
-                // Empty onTapGesture before needed to prevent longPressWithDrag from disabling scrolling!!
-                .onTapGesture { }
+                .onTapGesture { //location in
+                    //print("Location ", location)
+                }
                 .gesture(longPressGestureWithDragForLocation)
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -79,17 +95,16 @@ struct ContentView2: View {
                     print("Current scale: \(currentScale)")
                     print("Final scale: \(finalScale)")
                     print("Corrected location: \(correctedLocation)")
-                    tapLocation = location   // capture location !!
+                    tapLocation = correctedLocation   // capture location !!
                 default:
                     break
                 }
             }
     }
-
 }
 
-struct ContentView2_Previews: PreviewProvider {
+struct ContentView3_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView2()
+        ContentView3()
     }
 }

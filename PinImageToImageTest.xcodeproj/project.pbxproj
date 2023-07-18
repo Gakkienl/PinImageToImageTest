@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		8D5542982A387C8A00E20AEC /* ContentView2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D5542972A387C8A00E20AEC /* ContentView2.swift */; };
+		8D78E9572A6686B6003E244A /* SwiftUIImageZoomViewer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78E9562A6686B6003E244A /* SwiftUIImageZoomViewer.swift */; };
+		8D78E95A2A668934003E244A /* ContentView3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78E9592A668934003E244A /* ContentView3.swift */; };
+		8D78E95D2A668C17003E244A /* MapImagePinSmall.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D78E95C2A668C17003E244A /* MapImagePinSmall.swift */; };
 		8D9575082A2B5A6000B66B19 /* PinImageToImageTestApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */; };
 		8D95750A2A2B5A6000B66B19 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8D9575092A2B5A6000B66B19 /* ContentView.swift */; };
 		8D95750C2A2B5A6100B66B19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8D95750B2A2B5A6100B66B19 /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 
 /* Begin PBXFileReference section */
 		8D5542972A387C8A00E20AEC /* ContentView2.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView2.swift; sourceTree = "<group>"; };
+		8D78E9562A6686B6003E244A /* SwiftUIImageZoomViewer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIImageZoomViewer.swift; sourceTree = "<group>"; };
+		8D78E9592A668934003E244A /* ContentView3.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView3.swift; sourceTree = "<group>"; };
+		8D78E95C2A668C17003E244A /* MapImagePinSmall.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapImagePinSmall.swift; sourceTree = "<group>"; };
 		8D9575042A2B5A6000B66B19 /* PinImageToImageTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PinImageToImageTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinImageToImageTestApp.swift; sourceTree = "<group>"; };
 		8D9575092A2B5A6000B66B19 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -38,6 +44,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8D78E9542A668545003E244A /* Scenario 1 */ = {
+			isa = PBXGroup;
+			children = (
+				8D9575092A2B5A6000B66B19 /* ContentView.swift */,
+				8D9575172A2B6A9C00B66B19 /* PinchAndZoomModifier.swift */,
+			);
+			path = "Scenario 1";
+			sourceTree = "<group>";
+		};
+		8D78E9552A66856A003E244A /* Scenario 2 */ = {
+			isa = PBXGroup;
+			children = (
+				8D5542972A387C8A00E20AEC /* ContentView2.swift */,
+				8D78E9562A6686B6003E244A /* SwiftUIImageZoomViewer.swift */,
+			);
+			path = "Scenario 2";
+			sourceTree = "<group>";
+		};
+		8D78E9582A6688F6003E244A /* Scenario 3 */ = {
+			isa = PBXGroup;
+			children = (
+				8D78E9592A668934003E244A /* ContentView3.swift */,
+			);
+			path = "Scenario 3";
+			sourceTree = "<group>";
+		};
+		8D78E95B2A668BE5003E244A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8DA20F0F2A31F474006242CB /* GeometryProxy-Extension.swift */,
+				8D78E95C2A668C17003E244A /* MapImagePinSmall.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8D9574FB2A2B5A6000B66B19 = {
 			isa = PBXGroup;
 			children = (
@@ -58,10 +99,10 @@
 			isa = PBXGroup;
 			children = (
 				8D9575072A2B5A6000B66B19 /* PinImageToImageTestApp.swift */,
-				8D9575092A2B5A6000B66B19 /* ContentView.swift */,
-				8D5542972A387C8A00E20AEC /* ContentView2.swift */,
-				8D9575172A2B6A9C00B66B19 /* PinchAndZoomModifier.swift */,
-				8DA20F0F2A31F474006242CB /* GeometryProxy-Extension.swift */,
+				8D78E9542A668545003E244A /* Scenario 1 */,
+				8D78E9552A66856A003E244A /* Scenario 2 */,
+				8D78E9582A6688F6003E244A /* Scenario 3 */,
+				8D78E95B2A668BE5003E244A /* Helpers */,
 				8D95750B2A2B5A6100B66B19 /* Assets.xcassets */,
 				8D95750D2A2B5A6100B66B19 /* Preview Content */,
 			);
@@ -148,6 +189,9 @@
 			files = (
 				8DA20F102A31F474006242CB /* GeometryProxy-Extension.swift in Sources */,
 				8D95750A2A2B5A6000B66B19 /* ContentView.swift in Sources */,
+				8D78E95D2A668C17003E244A /* MapImagePinSmall.swift in Sources */,
+				8D78E95A2A668934003E244A /* ContentView3.swift in Sources */,
+				8D78E9572A6686B6003E244A /* SwiftUIImageZoomViewer.swift in Sources */,
 				8D9575082A2B5A6000B66B19 /* PinImageToImageTestApp.swift in Sources */,
 				8D5542982A387C8A00E20AEC /* ContentView2.swift in Sources */,
 				8D9575182A2B6A9C00B66B19 /* PinchAndZoomModifier.swift in Sources */,

@@ -5,6 +5,21 @@
 //  Created by Gakkie Gakkienl on 03/06/2023.
 //
 
+/*
+ CASE:
+        Enable the user tp pin images (symbols) to an Image (pixel coordinates)
+        The pins must stay in the correct place when panning and zooming and
+        also when the screen estate changes by rotating, or split screen and slide
+        over on Ipads. Lastly the pins (symbols) must be tapable!
+ SCENARIO 1:
+        ContentView + PinchAndZoomModifier (custom)
+        Basicly this works as intended, with one caveat: The pins are not tapable
+        because the custom modifier uses an overlay. Setting .allowsHitTesting(false)
+        on the overlay makes the pins tapable, but disables pinching and zooming
+ SOLUTION:
+        None ?
+ */
+
 import SwiftUI
 
 let arrowPointUp = Image(systemName: "arrowtriangle.up.fill")
@@ -23,10 +38,12 @@ struct ContentView: View {
                     .resizable()
                     .fixedSize()
                 
+                // Add Pin
                 mapImagePinSmall()
                     .foregroundColor(.green)
                     .position(tapLocation)
                 
+                // Test pins
                 mapImagePinSmall()
                     .foregroundColor(.red)
                     .position(x: 776, y: 1150)
@@ -50,19 +67,5 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-    }
-}
-
-struct mapImagePinSmall: View {
-    var body: some View {
-        Button {
-            print("Pin tapped!")
-        } label: {
-            arrowPointUp
-                .frame(width: 44, height: 44, alignment: .center)
-                .allowsHitTesting(true)
-                .background(.gray)
-                .zIndex(99)
-        }
     }
 }

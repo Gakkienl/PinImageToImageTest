@@ -43,26 +43,6 @@ struct PinchAndZoomModifier: ViewModifier {
         }
     }
     
-    // Try and get the location where the user Long Pressed
-//    private var longPressGestureWithDragForLocation: some Gesture {
-//        LongPressGesture(minimumDuration: 0.75).sequenced(before: DragGesture(minimumDistance: 0, coordinateSpace: .local))
-//            .onEnded { value in
-//                switch value {
-//                case .second(true, let drag):
-//                    let correctedLocation = CGPoint(
-//                                                    x: (drag?.location.x ?? .zero) / currentScale,
-//                                                    y: (drag?.location.y ?? .zero) / currentScale
-//                                                    )
-//                    print("Drag Location", drag?.location ?? .zero)
-//                    print("Current scale: \(currentScale)")
-//                    print("Corrected location: \(correctedLocation)")
-//                    tapLocation = correctedLocation   // capture location !!
-//                default:
-//                    break
-//                }
-//            }
-//    }
-    
     func body(content: Content) -> some View {
         ScrollView([.horizontal, .vertical]) {
             content
@@ -184,8 +164,8 @@ struct PinchToZoom: ViewModifier {
                 .animation(.spring(), value: isPinching)
                 .overlay(
                     PinchZoom(minScale: minScale, maxScale: maxScale, scale: $scale, isPinching: $isPinching, longPressLocation: $longPressLocation)
-                        // false disables pinch and long press on the overlay, true makes the buttons no longer tap-able
-                        .allowsHitTesting(false)
+                        // False disables pinch and long press on the overlay, true makes the buttons no longer tap-able
+                        //.allowsHitTesting(false)
                 )
         }
     }
