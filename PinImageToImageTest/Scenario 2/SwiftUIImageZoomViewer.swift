@@ -14,7 +14,7 @@ public struct SwiftUIImageZoomViewer: View {
     private let image: UIImage
     
     private var minScale: CGFloat = 1.0
-    private var maxScale: CGFloat = 3.0
+    private var maxScale: CGFloat = 5.0
 
     @State private var scale: CGFloat = 1
     @State private var lastScale: CGFloat = 1
@@ -129,8 +129,8 @@ public struct SwiftUIImageZoomViewer: View {
                     print("Scale: \(scale)")
                     print("Last Scale: \(lastScale)")
                     print("Corrected location: \(correctedLocation)")
-                    tapLocation = location
-                    //tapLocation = correctedLocation   // capture location !!
+                    tapLocation = correctedLocation
+                    //tapLocation = location   // capture location !!
                 default:
                     break
                 }

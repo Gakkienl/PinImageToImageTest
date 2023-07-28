@@ -54,8 +54,6 @@ struct PinchAndZoomModifier: ViewModifier {
 //                    print("Corrected location for Scale: \(correctedLocation)")
 //                    tapLocation = correctedLocation
 //                }
-                //.simultaneousGesture(longPressGestureWithDragForLocation)
-                //.simultaneousGesture(doubleTapGesture)
         }
         .animation(.easeInOut, value: currentScale)
     }

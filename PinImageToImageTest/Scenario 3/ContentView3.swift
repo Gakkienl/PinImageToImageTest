@@ -14,11 +14,11 @@
  SCENARIO 3:
         ContentView3 (ScrollView / custom)
         Works at scale = 1, pins stay in place! Also when zooming out (< 1). Pins are not placed
-        in the correct place when zooming in (under finger), also pins disappear when zooming in?
-        Zooming out again displays the pins in the correct place?
-        Zooming is very erratic & non responsive ...
+        in the correct place when zooming in (under finger), also (all) pins disappear when zooming in?
+        Zooming out again displays the pins in the correct place (both the test pins and at the taplocation?
+        Zooming is very erratic & non responsive (not smooth) ...
  SOLUTION:
-        Get pinch and zoom to work without breaking anything ....
+        Get pinch and zoom to work without breaking anything .... ???
  */
 
 import SwiftUI

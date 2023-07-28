@@ -15,9 +15,11 @@
         ContentView2 + SwiftUIImageZoomViewer (adapted)
         Test pins work! Pin at tappedLoaction is placed incorrectly! Somehow the
         coordinates are off?? Pin does stay in the correct location...
+        Zooming not always responsive. Tapping before zooming usually corrects this.
+        Is it possible to include this in the zoom gesture?
+        Also, zoomed in, not the whole image is viewable by scrolling!
  SOLUTION:
         Something to do with scale and offset, but can't figure it out ...
-        1418, 1224
  */
 
 import SwiftUI
@@ -28,33 +30,6 @@ struct ContentView2: View {
     
     var body: some View {
         SwiftUIImageZoomViewer(image: mapImage)
-        
-//        ZStack {
-//            ScrollView([.horizontal, .vertical], showsIndicators: false){
-//                ZStack {
-//                    Image(uiImage: mapImage)
-//                        .resizable()
-//                        .fixedSize()
-//
-//                    mapImagePinSmall()
-//                        .foregroundColor(.green)
-//                        .position(tapLocation)
-//
-//                    mapImagePinSmall()
-//                        .foregroundColor(.red)
-//                        .position(x: 776, y: 1150)
-//
-//                    mapImagePinSmall()
-//                        .foregroundColor(.blue)
-//                        .position(x: 1178, y: 1317)
-//                }
-//                .onAppear {
-//                    print("image size", mapImage.size)
-//                }
-//                .frame(width: mapImage.size.width, height: mapImage.size.height)
-//            }
-//            .frame(maxWidth: .infinity, maxHeight: .infinity)
-//        }
     }
 }
 

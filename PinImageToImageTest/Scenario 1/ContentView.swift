@@ -15,7 +15,8 @@
         ContentView + PinchAndZoomModifier (custom)
         Basicly this works as intended, with one caveat: The pins are not tapable
         because the custom modifier uses an overlay. Setting .allowsHitTesting(false)
-        on the overlay makes the pins tapable, but disables pinching and zooming
+        on the overlay makes the pins tapable, but disables pinching and zooming.
+        Also not the preferred solution, because it is not SwiftUI only!
  SOLUTION:
         None ?
  */

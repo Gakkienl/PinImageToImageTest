@@ -18,8 +18,10 @@ struct PinImageToImageTestApp: App {
             //ContentView2()
             
             // Scenario 3
-            ContentView3()
-
+            // ContentView3()
+            
+            // Scenario 4 (preferred)
+            ContentView4()
         }
     }
 }
